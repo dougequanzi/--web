@@ -1,0 +1,404 @@
+.pdf-viewer {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.pdf-header {
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pdf-info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.pdf-description {
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  max-width: 600px;
+}
+
+.pdf-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.meta-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pdf-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  min-width: 40px;
+}
+
+.control-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scale-display {
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
+.page-display {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  min-width: 80px;
+  text-align: center;
+}
+
+.download-btn {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.download-btn:hover {
+  background: #388e3c;
+  border-color: #388e3c;
+}
+
+.pdf-content {
+  padding: 2rem;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #e8eaf6;
+  border-top-color: #3949ab;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #f44336;
+}
+
+.error-state h3 {
+  margin: 0 0 0.5rem 0;
+  color: #f44336;
+}
+
+.error-state p {
+  margin: 0 0 2rem 0;
+  max-width: 500px;
+}
+
+.pdf-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pdf-frame-container {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #e8eaf6;
+  border-radius: 4px;
+  overflow: hidden;
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-preview {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e8eaf6;
+}
+
+.preview-placeholder {
+  text-align: center;
+  padding: 2rem;
+}
+
+.preview-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #3949ab;
+}
+
+.preview-placeholder h4 {
+  margin: 0 0 0.5rem 0;
+  color: #1a237e;
+}
+
+.preview-placeholder p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.preview-size, .preview-path {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.preview-download {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #3949ab;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.preview-download:hover {
+  background: #1a237e;
+}
+
+.preview-info h4 {
+  margin: 0 0 1rem 0;
+  color: #1a237e;
+}
+
+.preview-info p {
+  margin: 0 0 1rem 0;
+  color: #666;
+}
+
+.preview-info ul {
+  margin: 0 0 1.5rem 1.5rem;
+  color: #666;
+}
+
+.preview-info li {
+  margin-bottom: 0.5rem;
+}
+
+.preview-details {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #e8eaf6;
+}
+
+.preview-details p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.pdf-footer {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-top: 1px solid #e8eaf6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.file-list {
+  flex: 1;
+  min-width: 300px;
+}
+
+.file-list h4 {
+  margin: 0 0 1rem 0;
+  color: #1a237e;
+}
+
+.file-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e8eaf6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.file-item:hover {
+  background: #e8eaf6;
+  border-color: #3949ab;
+}
+
+.file-item.active {
+  background: #e8eaf6;
+  border-color: #3949ab;
+  border-left: 4px solid #3949ab;
+}
+
+.file-icon {
+  font-size: 1.5rem;
+  color: #3949ab;
+}
+
+.file-details {
+  flex: 1;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #1a237e;
+  margin-bottom: 0.25rem;
+}
+
+.file-size {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.viewer-info {
+  flex: 1;
+  min-width: 300px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.viewer-info p {
+  margin: 0.5rem 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .pdf-header {
+    flex-direction: column;
+  }
+  
+  .pdf-controls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .pdf-frame-container {
+    height: 400px;
+  }
+  
+  .pdf-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .file-list, .viewer-info {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-content {
+    padding: 1rem;
+  }
+  
+  .pdf-frame-container {
+    height: 300px;
+  }
+  
+  .pdf-controls {
+    gap: 0.25rem;
+  }
+  
+  .control-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: 35px;
+  }
+  
+  .scale-display, .page-display {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: 50px;
+  }
+}
